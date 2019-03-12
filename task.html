@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<style>
+	h1,#content-center{
+		text-align:center;
+	}
+	table td,table tr th{ 
+		text-align:center;
+	}
+	#footer-align{
+		width:100%;
+		padding: 1em 1em 0em 1em;
+		cursor:pointer;
+	}
+	
+	table thead{
+		background-color:#83d6ff;
+	}
+	tbody tr:nth-child(odd) {
+	  background-color: #2ea8e4;
+	}
+	tbody tr:nth-child(even) {
+	  background-color: #8cc7e4;
+	}
+	tbody tr{
+		font-size:15px;
+	}
+	#text-format{
+		font-weight:bold;
+		color:white;
+	}
+	ul li{
+		list-style-image: url('arrow.png');
+	}
+	</style>
+</head>
+
+<body>
+	<h1>Table</h1>
+	<table width="100%" border="1">
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+		<tbody>
+				<tr>
+						<td>saa</td>
+						<td>asd</td>
+						<td>1000</td>
+				</tr>
+				<tr>
+						<td>sad</td>
+						<td>sadsa</td>
+						<td>2000</td>
+				</tr>
+				<tr>
+						<td>afds</td>
+						<td>fdfd</td>
+						<td>3000</td>
+				</tr>
+				<tr>
+						<td>saa</td>
+						<td>asd</td>
+						<td>4000</td>
+				</tr>
+				<tr id="text-format">
+						<td colspan="2">Total</td>
+						<td>10000</td>
+				</tr>
+		</tbody>
+    </table>	
+	<footer>
+		<div id="footer-align">
+			<ul>
+						<li><a href="#">Switch to App</a></li>
+						<li><a href="#">Find a store</a></li>
+						<li><a href="#">Give Us your Feedback</a></li>
+						<li><a href="#">Rate Us</a></li>
+			</ul>	
+		</div>
+		<hr>
+		<div id="content-center">
+			Copyright
+            <span class="glyphicon glyphicon-copyright-mark"></span>
+            2019 eagle.all rights reserved
+		</div>
+		
+	</footer>
+</body>
+</html>
