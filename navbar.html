@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NAV BAR</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<style>
+	
+		  nav {    
+			display: block;
+			text-align: center;
+		  }
+		  nav ul {
+			margin: 0;
+			padding:0;
+			list-style: none;
+		  }
+		  .nav a {
+			display:block; 
+			background: #111; 
+			color:#fff; 
+			text-decoration: none;
+			padding: .8em 1.8em;
+			text-transform: uppercase;
+			font-size: 80%;
+			letter-spacing: 2px;
+			position: relative;
+		  }
+		  .nav{  
+			vertical-align: top; 
+			display: inline-block;
+			border-radius:6px;
+		  }
+		  .nav li{
+			position: relative;
+		   }
+		  .nav > li { 
+			float:left; 
+			border-bottom: 4px #aaa solid; 
+			margin-right: 1px; 
+		  } 
+		  .nav > li > a { 
+			margin-bottom:1px;
+		  }
+		  .nav > li:hover , .nav > li:hover >a
+		  {  
+			border-bottom-color:orange;
+		   }
+		   .nav>li>a:focus, .nav>li>a:hover {
+			text-decoration: none;
+			background-color: black;
+			}
+		  .nav li:hover > a 
+		  { 
+			color:orange; 
+		  }
+		  .nav > li:first-child  { border-radius: 4px 0 0 4px;} 
+		  .nav > li:first-child>a{border-radius: 4px 0 0 0;}
+		  .nav > li:last-child  { 
+			border-radius: 0 0 4px 0; 
+			margin-right: 0;
+		  } 
+		  .nav > li:last-child >a{border-radius: 0 4px 0 0; }
+		  .nav li li a { margin-top:1px}
+		  
+		  
+		  
+			.nav li a:first-child:nth-last-child(2):before { 
+			 content:""; 
+			 position: absolute; 
+			 height:0; 
+			 width: 0; 
+			 border: 5px solid transparent; 
+			 top: 50% ;
+			 right:5px;  
+		   }
+		   
+		 /* submenu positioning*/
+		.nav ul {
+		  position: absolute;
+		  white-space: nowrap;
+		  border-bottom: 5px solid  orange;
+		  z-index: 1;
+		  left: -99999em;
+		}
+		.nav > li:hover > ul {
+		  left: auto;
+		  padding-top: 5px  ;
+		  min-width: 100%;
+		}
+		.nav > li li ul {  border-left:1px solid #fff;}
+
+
+		.nav > li li:hover > ul { 
+		  left: 100%;
+		  top: -1px;
+		}
+		/* arrow hover styling */
+		.nav > li > a:first-child:nth-last-child(2):before { 
+		  border-top-color: #aaa; 
+		}
+		.nav li li > a:first-child:nth-last-child(2):before {  
+		  border-left-color: #aaa; 
+		  margin-top: -5px
+		}
+		
+	
+	</style>
+</head>
+<body>
+	
+	<nav>
+	  <ul class="nav" id="test">
+		<li><a href="#">About</a></li>
+		<li><a href="#">Portfolio</a>
+		  <ul>
+			<li><a href="#">item</a></li>
+			<li><a href="#">item</a></li>
+			<li><a href="#">item</a></li>
+			<li><a href="#">item</a></li>
+		  </ul>
+		</li>
+		<li><a href="#">Resume</a>
+		  <ul>
+			<li><a href="#">item a lonng submenu</a></li>
+			<li><a href="#">item</a>
+			  <ul id="test1">
+				<li><a href="#">User1</a></li>
+				<li><a href="#">User2</a></li>
+				<li><a href="#">User3</a></li>
+				<li><a href="#">User4</a></li>
+			  </ul>
+			</li>
+			<li><a href="#">item</a></li>
+			<li><a href="#">item</a></li>
+		  </ul>
+		</li>
+		<li><a href="#">Download</a></li>
+		<li><a href="#">Rants</a>
+		  <ul>
+			<li><a href="#">item</a></li>
+			<li><a href="#">item</a></li>
+			<li><a href="#">item</a></li>
+			<li><a href="#">item</a></li>
+		  </ul>
+		</li>
+		<li><a href="#">Contact</a></li>
+	  </ul>
+	</nav>
+	<script>
+		    function getEventTarget(e) {
+				e = e || window.event;
+				return e.target || e.srcElement; 
+			}
+
+			var ul = document.getElementById('test');
+			ul.onclick = function(event) {
+				var target = getEventTarget(event);
+				console.log(target.innerHTML);
+			};
+			
+			var ul = document.getElementById('test1');
+			ul.onclick = function(event) {
+				var target = getEventTarget(event);
+				console.log(target.innerHTML);
+			};
+	</script>
+</body>
+</html>
