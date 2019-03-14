@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>NAV BAR</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<style>
+	<head>
+		<title>NAV BAR</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+				<style>
+
+body {
+    margin:0;
+    background-color:azure;
+    }
+
+* {
+  	box-sizing: border-box;
+	}
 	
+    /* nav bars style starts here*/
 		  nav {    
 			display: block;
-			text-align: center;
+            margin: 5px;
 		  }
+          #f-right{
+              text-align: right;
+              
+          }
 		  nav ul {
 			margin: 0;
 			padding:0;
@@ -89,8 +103,6 @@
 		  min-width: 100%;
 		}
 		.nav > li li ul {  border-left:1px solid #fff;}
-
-
 		.nav > li li:hover > ul { 
 		  left: 100%;
 		  top: -1px;
@@ -103,67 +115,186 @@
 		  border-left-color: #aaa; 
 		  margin-top: -5px
 		}
+
+      /*nav style ends here */  
+
+
+      #headdiv{
+
+          width:100%;
+          height:150px;
+      }  
+
+      #headimg{
+
+          width:100%;
+          height: inherit;
+      }
+
+      .main{
+        height: 300px;
+            
+
+      }
+
+      #con1{
+        overflow: auto;
+        height: 500px;
+        width: 100%;
+      }
+
+
+      article{
+		width:100%;
+		background-color: #f1f1f1;
+		padding:10px;
+        
+        
+		}
+
+        iframe{
+            height: 260px;
+            
+        }
+        p{
+            padding: 1em;
+        }
+
+      footer{
+
+        position: fixed;
+         left: 0;
+     bottom: 0;
+    width: 100%;
+    background-color:#777;
+     color: white;
+    text-align: center;
+          
+      }
 		
 	
 	</style>
-</head>
-<body>
-	
-	<nav>
-	  <ul class="nav" id="test">
-		<li><a href="#">About</a></li>
-		<li><a href="#">Portfolio</a>
-		  <ul>
-			<li><a href="#">item</a></li>
-			<li><a href="#">item</a></li>
-			<li><a href="#">item</a></li>
-			<li><a href="#">item</a></li>
-		  </ul>
-		</li>
-		<li><a href="#">Resume</a>
-		  <ul>
-			<li><a href="#">item a lonng submenu</a></li>
-			<li><a href="#">item</a>
-			  <ul id="test1">
-				<li><a href="#">User1</a></li>
-				<li><a href="#">User2</a></li>
-				<li><a href="#">User3</a></li>
-				<li><a href="#">User4</a></li>
-			  </ul>
-			</li>
-			<li><a href="#">item</a></li>
-			<li><a href="#">item</a></li>
-		  </ul>
-		</li>
-		<li><a href="#">Download</a></li>
-		<li><a href="#">Rants</a>
-		  <ul>
-			<li><a href="#">item</a></li>
-			<li><a href="#">item</a></li>
-			<li><a href="#">item</a></li>
-			<li><a href="#">item</a></li>
-		  </ul>
-		</li>
-		<li><a href="#">Contact</a></li>
-	  </ul>
-	</nav>
+			</head>
+			<body>
+				<header>
+					<div id="headdiv">
+						<img id="headimg"src="head1.jpg" alt="Header image">
+						</div>
+					</header>
+					<nav>
+						<ul class="nav" id="test">
+							<li>
+								<a href="#">About</a>
+							</li>
+							<li>
+								<a href="#">Portfolio</a>
+								<ul>
+									<li>
+										<a href="#">item</a>
+									</li>
+									<li>
+										<a href="#">item</a>
+									</li>
+									<li>
+										<a href="#">item</a>
+									</li>
+									<li>
+										<a href="#">item</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Resume</a>
+								<ul>
+									<li>
+										<a href="#">item a lonng submenu</a>
+									</li>
+									<li>
+										<a href="#">item</a>
+										<ul id="test1">
+											<li>
+												<a href="#">User1</a>
+											</li>
+											<li>
+												<a href="#">User2</a>
+											</li>
+											<li>
+												<a href="#">User3</a>
+											</li>
+											<li>
+												<a href="#">User4</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="#">item</a>
+									</li>
+									<li>
+										<a href="#">item</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Download</a>
+							</li>
+							<li>
+								<a href="#">Rants</a>
+								<ul>
+									<li>
+										<a href="#">item</a>
+									</li>
+									<li>
+										<a href="#">item</a>
+									</li>
+									<li>
+										<a href="#">item</a>
+									</li>
+									<li>
+										<a href="#">item</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Contact</a>
+							</li>
+						</ul>
+						<ul class="nav f-right" style="float: right;">
+							<li>
+								<a href="#">Login</a>
+							</li>
+							<li>
+								<a href="#">Signup</a>
+							</li>
+						</ul>
+					</nav>
+					<div id="con1">
+						<div class="main">
+							<article>
+								<iframe src="https://en.wikipedia.org/wiki/HCL_Technologies" width="1500px" ></iframe>
+							</article>
+						</div>
+						<div id="con2">
+							<p>The company has offices in 44 countries including the United States, France and Germany, and the United Kingdom with a worldwide network of R&D, "innovation labs" and "delivery centers", and 120,000+ employees and its customers include 250 of the Fortune 500 and 650 of the Global 2000 companies. It operates across sectors including aerospace and defense, automotive, banking, capital markets, chemical and process industries, consumer goods, energy and utilities, healthcare, hi-tech, industrial manufacturing, insurance, life sciences, manufacturing, media and entertainment, mining and natural resources, oil and gas, retail, telecom, and travel, transportation, logistics & hospitality.The company has offices in 44 countries including the United States, France and Germany, and the United Kingdom with a worldwide network of R&D, "innovation labs" and "delivery centers", and 120,000+ employees and its customers include 250 of the Fortune 500 and 650 of the Global 2000 companies. It operates across sectors including aerospace and defense, automotive, banking, capital markets, chemical and process industries, consumer goods, energy and utilities, healthcare, hi-tech, industrial manufacturing, insurance, life sciences, manufacturing, media and entertainment, mining and natural resources, oil and gas, retail, telecom, and travel, transportation, logistics & hospitality.The company has offices in 44 countries including the United States, France and Germany, and the United Kingdom with a worldwide network of R&D, "innovation labs" and "delivery centers", and 120,000+ employees and its customers include 250 of the Fortune 500 and 650 of the Global 2000 companies. It operates across sectors including aerospace and defense, automotive, banking, capital markets, chemical and process industries, consumer goods, energy and utilities, healthcare, hi-tech, industrial manufacturing, insurance, life sciences, manufacturing, media and entertainment, mining and natural resources, oil and gas, retail, telecom, and travel, transportation, logistics & hospitality.The company has offices in 44 countries including the United States, France and Germany, and the United Kingdom with a worldwide network of R&D, "innovation labs" and "delivery centers", and 120,000+ employees and its customers include 250 of the Fortune 500 and 650 of the Global 2000 companies. It operates across sectors including aerospace and defense, automotive, banking, capital markets, chemical and process industries, consumer goods, energy and utilities, healthcare, hi-tech, industrial manufacturing, insurance, life sciences, manufacturing, media and entertainment, mining and natural resources, oil and gas, retail, telecom, and travel, transportation, logistics & hospitality.The company has offices in 44 countries including the United States, France and Germany, and the United Kingdom with a worldwide network of R&D, "innovation labs" and "delivery centers", and 120,000+ employees and its customers include 250 of the Fortune 500 and 650 of the Global 2000 companies. It operates across sectors including aerospace and defense, automotive, banking, capital markets, chemical and process industries, consumer goods, energy and utilities, healthcare, hi-tech, industrial manufacturing, insurance, life sciences, manufacturing, media and entertainment, mining and natural resources, oil and gas, retail, telecom, and travel, transportation, logistics & hospitality.The company has offices in 44 countries including the United States, France and Germany, and the United Kingdom with a worldwide network of R&D, "innovation labs" and "delivery centers", and 120,000+ employees and its customers include 250 of the Fortune 500 and 650 of the Global 2000 companies. It operates across sectors including aerospace and defense, automotive, banking, capital markets, chemical and process industries, consumer goods, energy and utilities, healthcare, hi-tech, industrial manufacturing, insurance, life sciences, manufacturing, media and entertainment, mining and natural resources, oil and gas, retail, telecom, and travel, transportation, logistics & hospitality.The company has offices in 44 countries including the United States, France and Germany, and the United Kingdom with a worldwide network of R&D, "innovation labs" and "delivery centers", and 120,000+ employees and its customers include 250 of the Fortune 500 and 650 of the Global 2000 companies. It operates across sectors including aerospace and defense, automotive, banking, capital markets, chemical and process industries, consumer goods, energy and utilities, healthcare, hi-tech, industrial manufacturing, insurance, life sciences, manufacturing, media and entertainment, mining and natural resources, oil and gas, retail, telecom, and travel, transportation, logistics & hospitality.The company has offices in 44 countries including the United States, France and Germany, and the United Kingdom with a worldwide network of R&D, "innovation labs" and "delivery centers", and 120,000+ employees and its customers include 250 of the Fortune 500 and 650 of the Global 2000 companies. It operates across sectors including aerospace and defense, automotive, banking, capital markets, chemical and process industries, consumer goods, energy and utilities, healthcare, hi-tech, industrial manufacturing, insurance, life sciences, manufacturing, media and entertainment, mining and natural resources, oil and gas, retail, telecom, and travel, transportation, logistics & hospitality.The company has offices in 44 countries including the United States, France and Germany, and the United Kingdom with a worldwide network of R&D, "innovation labs" and "delivery centers", and 120,000+ employees and its customers include 250 of the Fortune 500 and 650 of the Global 2000 companies. It operates across sectors including aerospace and defense, automotive, banking, capital markets, chemical and process industries, consumer goods, energy and utilities, healthcare, hi-tech, industrial manufacturing, insurance, life sciences, manufacturing, media and entertainment, mining and natural resources, oil and gas, retail, telecom, and travel, transportation, logistics & hospitality.The company has offices in 44 countries including the United States, France and Germany, and the United Kingdom with a worldwide network of R&D, "innovation labs" and "delivery centers", and 120,000+ employees and its customers include 250 of the Fortune 500 and 650 of the Global 2000 companies. It operates across sectors including aerospace and defense, automotive, banking, capital markets, chemical and process industries, consumer goods, energy and utilities, healthcare, hi-tech, industrial manufacturing, insurance, life sciences, manufacturing, media and entertainment, mining and natural resources, oil and gas, retail, telecom, and travel, transportation, logistics & hospitality.</p>
+						</div>
+					</div>
+					<footer>
+						<div class="footer">
+							<p>Posted by: @So</p>
+							<p>Contact information: 
+								<a href="mailto:someone@example.com">someone@example.com</a>.
+							</p>
+						</div>
+					</footer>
 	<script>
 		    function getEventTarget(e) {
 				e = e || window.event;
 				return e.target || e.srcElement; 
 			}
-
 			var ul = document.getElementById('test');
 			ul.onclick = function(event) {
 				var target = getEventTarget(event);
 				console.log(target.innerHTML);
 			};
-			
-			var ul = document.getElementById('test1');
-			ul.onclick = function(event) {
-				var target = getEventTarget(event);
-				console.log(target.innerHTML);
-			};
 	</script>
-</body>
-</html>
+				</body>
+			</html>
