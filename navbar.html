@@ -183,7 +183,7 @@ body {
 					</header>
 					<nav>
 						<ul class="nav" id="test">
-							<li>
+							<li> 
 								<a href="#">About</a>
 							</li>
 							<li>
@@ -204,14 +204,15 @@ body {
 								</ul>
 							</li>
 							<li>
+                                
 								<a href="#">Resume</a>
 								<ul>
 									<li>
 										<a href="#">item a lonng submenu</a>
 									</li>
 									<li>
-										<a href="#">item</a>
-										<ul id="test1">
+										<a href="#">Link1</a>
+										<ul>
 											<li>
 												<a href="#">User1</a>
 											</li>
@@ -227,12 +228,13 @@ body {
 										</ul>
 									</li>
 									<li>
-										<a href="#">item</a>
+										<a href="#">Link2</a>
 									</li>
 									<li>
-										<a href="#">item</a>
+										<a href="#">Link3</a>
 									</li>
-								</ul>
+                                </ul>
+                                
 							</li>
 							<li>
 								<a href="#">Download</a>
@@ -240,17 +242,17 @@ body {
 							<li>
 								<a href="#">Rants</a>
 								<ul>
-									<li>
-										<a href="#">item</a>
+									<li> 
+										<a href="#">item1</a>
 									</li>
 									<li>
-										<a href="#">item</a>
+										<a href="#">item2</a>
 									</li>
 									<li>
-										<a href="#">item</a>
+										<a href="#">item3</a>
 									</li>
 									<li>
-										<a href="#">item</a>
+										<a href="#">item4</a>
 									</li>
 								</ul>
 							</li>
@@ -286,15 +288,20 @@ body {
 						</div>
 					</footer>
 	<script>
-		    function getEventTarget(e) {
-				e = e || window.event;
-				return e.target || e.srcElement; 
-			}
-			var ul = document.getElementById('test');
-			ul.onclick = function(event) {
-				var target = getEventTarget(event);
-				console.log(target.innerHTML);
-			};
-	</script>
+		var ul = document.getElementById('test');
+		ul.onclick = function(event) {
+
+            console.log(document.querySelectorAll('li:hover'));
+
+		    let len = document.querySelectorAll('li:hover').length;
+            let i=1;
+
+            while (i <=len){
+                console.log(document.querySelectorAll('li:hover')[len-i].firstElementChild.innerText)
+                i = i+1;
+            }
+		};
+            
+	</script> 
 				</body>
 			</html>
