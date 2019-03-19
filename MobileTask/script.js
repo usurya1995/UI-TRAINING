@@ -15,3 +15,17 @@ function carousel() {
 }
 
 //slider code ends here //
+
+function changeColor(x)
+{
+	
+   var icon = document.getElementById(x);
+   if(icon.className.indexOf('red') == -1){
+	    icon.classList.remove('black');
+		icon.classList.add("red");
+   }else{
+	   icon.classList.add("black");
+	   icon.classList.remove("red");
+   }
+   
+}
