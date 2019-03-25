@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Circle</title>
+        <script src="form.js"></script>
+        <script>
+           var c = new userDetails(0,0,0,0);
+
+            function updateModal(){
+                var s1 = window.document.forms[0].elements[0].value;
+                var s2 = window.document.forms[0].elements[1].value;
+                var s3 = window.document.forms[0].elements[2].value;
+                var s4 = window.document.forms[0].elements[3].value;
+
+                c = new userDetails(s1,s2,s3,s4);
+                res1 = c.getAllowence();
+                res2 = c.getTax();
+                res3 = c.getNetSalary();
+                updateUi();
+            }
+
+            function updateUi(){
+                window.document.getElementById("output1").innerText= c.getId();
+                window.document.getElementById("output2").innerText= c.getName();
+                window.document.getElementById("output3").innerText= c.getBasics();
+                window.document.getElementById("output4").innerText= res1;
+                window.document.getElementById("output5").innerText= res2;
+                window.document.getElementById("output6").innerText= res3;
+            }
+
+        </script>
+    </head>    
+    <body>
+        <h1>Employee Salary</h1>
+        <form>
+            <label>ID:</label>
+            <input type="text" id="id">
+            <br>
+            <label>NAME:</label>
+            <input type="text" id="name">
+            <br>
+            <label>BASICS:</label>
+            <input type="text" id="basic">
+            <br>
+            <label>GRADE:</label>
+            <select id="grade">
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+            </select>
+            <br>
+            <input type="button" value="Display" onclick="updateModal()"> 
+
+            <table border="1">
+                <tr>
+                    <td>ID</td>
+                    <td id="output1"></td>
+                </tr>
+                <tr>
+                    <td>NAME</td>
+                    <td id="output2"></td>
+                </tr>
+                <tr>
+                    <td>BASICS</td>
+                    <td id="output3"></td>
+                </tr>
+                <tr>
+                    <td>ALLOWENCE</td>
+                    <td id="output4"></td>
+                </tr>
+                <tr>
+                    <td>TAXES</td>
+                    <td id="output5"></td>
+                </tr>
+                <tr>
+                    <td>NET SALARY</td>
+                    <td id="output6"></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
