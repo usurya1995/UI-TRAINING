@@ -1,0 +1,382 @@
+<html>
+    <head>
+        <style>
+            body{
+                margin: 1cm;
+            }
+            #studDataTable{
+                border: solid thin black;
+                border-collapse: collapse;
+            }
+            #studentDataTable{
+                width:75%;
+                border: solid thin black;
+                margin-top: 1cm;
+            }
+            #addEditTable{
+                width: 100%;
+                border: solid thin;
+                padding: 6mm;
+                border-radius: 1mm;
+                background-image: url('image4.jpg');
+                display: none;
+            }
+            .buttonLikeCell{
+                background-color: darkorange;
+                border-radius: 2mm;
+                width: 20mm;
+                height: 8mm;
+                text-align: center;
+                padding: 3mm;
+                cursor: pointer;
+                text-decoration: none;
+                color: white;
+            }
+            #addButton{
+                display: none;
+            }
+            #updateButton{
+                display: none;
+            }
+            #title{
+                font-size: x-large;
+                font-family : 'Times new roman';
+            }
+        </style>
+        <script src="Student.js"></script>
+        <script>
+            function deleteAction(st){
+                //alert(st.id+","+st.name);
+                function inner(){
+                    //alert("Inner:"+st.id+":"+st.name);
+                    studentRemover.call(sm,st.id);
+                    refreshUI();
+                }
+                return inner;
+            }
+
+            function showAction(st){
+                //alert(st.id+","+st.name);
+                function inner(){
+                    //alert("Inner:"+st.id+":"+st.name);
+                    var stud = studentFinder.call(sm,st.id);
+                    var displayTable = document.getElementById("studDataTable");
+                    var cellsToFill = displayTable.getElementsByClassName("studDataCell");
+                    for(i=0;i<=cellsToFill.length;i++){
+                        cellsToFill[i].innerText = stud[cellsToFill[i].id];
+                    }
+                }
+                return inner;
+            }
+
+            function editAction(st){
+                //alert(st.id+","+st.name);
+                function inner(){
+                    //alert("Inner:"+st.id+":"+st.name);
+                    var stud = studentFinder.call(sm,st.id);
+                    var displayTable = document.getElementById("addEditTable");
+                    var inputsToFill = displayTable.getElementsByClassName("inputCell");
+                    for(i=0;i<inputsToFill.length;i++){
+                        inputsToFill[i].value = stud[inputsToFill[i].id];
+                    }
+                    document.getElementById("updateButton").style.display="block";
+                    document.getElementById("addButton").style.display="none";
+                    document.getElementById("title").innerText="Editing Student";
+                }
+                return inner;
+            }
+
+            function addAction(){
+                var id = document.forms[0].elements[0].value;
+                id=parseInt(id);
+                if(isNaN(id)){
+                    return ;
+                }
+                var name= document.forms[0].elements[1].value;
+
+                var m1 = document.forms[0].elements[2].value;
+                m1=parseInt(m1);
+                if(isNaN(m1)){
+                    return ;
+                }
+
+                var m2 = document.forms[0].elements[3].value;
+                m1=parseInt(m1);
+                if(isNaN(m1)){
+                    return ;
+                }
+
+                var m3 = document.forms[0].elements[4].value;
+                m3=parseInt(m3);
+                if(isNaN(m3)){
+                    return ;
+                }
+
+                var stud = new Student(id,name,m1,m2,m3);
+
+                studentAdder.call(sm,stud);
+                refreshUI();
+
+                var inputCell = document.getElementsByClassName("inputCell");
+                for(i=0;i<inputCell.length-1;i++){
+                    inputCell[i].value = '';
+                }
+            }
+
+            function refreshUI(){
+                var table = document.getElementById("studentDataTable");
+                var allChild = table.childNodes;
+                for(i=allChild.length-1;i>=0;i--){
+                    table.removeChild(allChild[i]);
+                }
+                loadData();
+            }
+
+            function loadData(){
+                var students = sm.getAllStudents();
+                var table = document.getElementById("studentDataTable");
+
+                for(i in students){
+                    var stud = students[i];
+
+                    var tn1 = document.createTextNode(stud.id);
+                    var tn2 = document.createTextNode(stud.name);
+                    var tn3 = document.createTextNode(stud.mark1);
+                    var tn4 = document.createTextNode(stud.mark2);
+                    var tn5 = document.createTextNode(stud.mark3);
+                    var tn6 = document.createTextNode("DELETE");
+                    var tn7 = document.createTextNode("SHOW");
+                    //var tn6 = document.createTextNode(stud.getTotal());
+
+                    var cell1 = document.createElement("td");
+                    var cell2 = document.createElement("td");
+                    var cell3 = document.createElement("td");
+                    var cell4 = document.createElement("td");
+                    var cell5 = document.createElement("td");
+                    var cell6 = document.createElement("td");
+                    cell6.setAttribute("class","buttonLikeCell");
+                    cell6.addEventListener("click", deleteAction(stud));
+                    var cell7 = document.createElement("td");
+                    cell7.setAttribute("class","buttonLikeCell");
+                    cell7.addEventListener("click", showAction(stud));
+
+                    cell1.appendChild(tn1);
+                    cell2.appendChild(tn2);
+                    cell3.appendChild(tn3);
+                    cell4.appendChild(tn4);
+                    cell5.appendChild(tn5);
+                    cell6.appendChild(tn6);
+                    cell7.appendChild(tn7);
+
+                    var row = document.createElement("tr");
+                    row.addEventListener("dblclick", editAction(stud));
+                    row.appendChild(cell1);
+                    row.appendChild(cell2);
+                    row.appendChild(cell3);
+                    row.appendChild(cell4);
+                    row.appendChild(cell5);
+                    row.appendChild(cell6);
+                    row.appendChild(cell7);
+
+                    table.appendChild(row);
+                }
+
+            }
+
+            function updateAction(){
+                var id = document.forms[0].elements[0].value;
+                id=parseInt(id);
+                if(isNaN(id)){
+                    return ;
+                }
+                var name= document.forms[0].elements[1].value;
+
+                var m1 = document.forms[0].elements[2].value;
+                m1=parseInt(m1);
+                if(isNaN(m1)){
+                    return ;
+                }
+
+                var m2 = document.forms[0].elements[3].value;
+                m1=parseInt(m1);
+                if(isNaN(m1)){
+                    return ;
+                }
+
+                var m3 = document.forms[0].elements[4].value;
+                m3=parseInt(m3);
+                if(isNaN(m3)){
+                    return ;
+                }
+
+                var stud = new Student(id,name,m1,m2,m3);
+
+                studentUpdater.call(sm,stud);
+                refreshUI();
+
+                var inputCell = document.getElementsByClassName("inputCell");
+                for(i=0;i<inputCell.length;i++){
+                    inputCell[i].value = '';
+                }
+            }
+
+            function init(){
+                var links= document.getElementsByTagName("a");
+                for(i=0 ; i<links.length; i++){
+                    links[i].addEventListener("click", action);
+                }
+                var addButton = document.getElementById("addButton");
+                addButton.addEventListener("click",addAction);
+
+                var updateButton = document.getElementById("updateButton");
+                updateButton.addEventListener("click",updateAction);
+            }
+
+            function action(eve){
+                eve.preventDefault();
+                var clickedLink = eve.target;
+                alert("Student Will be saved")
+                if(clickedLink.getAttribute('href') == 'save'){
+                   if(window.localStorage){
+                       var students = sm.getAllStudents();
+                       console.log(students);
+                       var studentsstr = JSON.stringify(students);
+                       window.localStorage.setItem("students", studentsstr);
+                       alert("Student Data Saved");
+                   }
+                }else if(clickedLink.getAttribute('href') == 'load'){
+                    if(window.localStorage){
+                       var students = null;
+                       var studentsstr = window.localStorage.getItem("students");
+                       students = JSON.parse(studentsstr);
+                       alert("Student Data Loaded");
+
+                       var table = document.getElementById("studentDataTable");
+
+                       for(i in students){
+                           var stud = students[i];
+
+                           var tn1 = document.createTextNode(stud.id);
+                           var tn2 = document.createTextNode(stud.name);
+                           var tn3 = document.createTextNode(stud.mark1);
+                           var tn4 = document.createTextNode(stud.mark2);
+                           var tn5 = document.createTextNode(stud.mark3);
+                           var tn6 = document.createTextNode("DELETE");
+                           var tn7 = document.createTextNode("SHOW");
+                           //var tn6 = document.createTextNode(stud.getTotal());
+
+                           var cell1 = document.createElement("td");
+                           var cell2 = document.createElement("td");
+                           var cell3 = document.createElement("td");
+                           var cell4 = document.createElement("td");
+                           var cell5 = document.createElement("td");
+                           var cell6 = document.createElement("td");
+                           cell6.setAttribute("class","buttonLikeCell");
+                           cell6.addEventListener("click", deleteAction(stud));
+                           var cell7 = document.createElement("td");
+                           cell7.setAttribute("class","buttonLikeCell");
+                           cell7.addEventListener("click", showAction(stud));
+
+                           cell1.appendChild(tn1);
+                           cell2.appendChild(tn2);
+                           cell3.appendChild(tn3);
+                           cell4.appendChild(tn4);
+                           cell5.appendChild(tn5);
+                           cell6.appendChild(tn6);
+                           cell7.appendChild(tn7);
+
+                           var row = document.createElement("tr");
+                           row.addEventListener("dblclick", editAction(stud));
+                           row.appendChild(cell1);
+                           row.appendChild(cell2);
+                           row.appendChild(cell3);
+                           row.appendChild(cell4);
+                           row.appendChild(cell5);
+                           row.appendChild(cell6);
+                           row.appendChild(cell7);
+
+                           table.appendChild(row);
+                       }
+                   }
+                }else if(clickedLink.getAttribute('href') == 'add'){
+                    document.getElementById("addEditTable").style.display = "block";
+                    document.getElementById("title").innerText = "ADD NEW STUDENT"
+                    document.getElementById("updateButton").style.display = "none";
+                    document.getElementById("addButton").style.display = "block";
+                }
+                
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        <div>
+            <a href="add" class="buttonLikeCell">ADD NEW</a>
+        </div>
+        <div style="float:right;margin-right: 365px;">
+            <a href="save" class="buttonLikeCell">SAVE</a>
+            <a href="load" class="buttonLikeCell" >LOAD</a>
+        </div>
+        <br>
+
+        <table id="addEditTable">
+            <tr style="height:1cm;">
+                <td colspan="5" style="background-image: url('image12.jpg');background-repeat:no-repeat;" id="title"></td>
+            </tr>
+            <form>
+                <tr>
+                    <td>
+                        ID<br>
+                        <input class="inputCell" id="id">
+                    </td>
+                    <td>
+                        NAME<br>
+                        <input class="inputCell" id="name">
+                    </td>
+                    <td>
+                        MARK1<br>
+                        <input class="inputCell" id="mark1">
+                    </td>
+                    <td>
+                        MARK2<br>
+                        <input class="inputCell" id="mark2">
+                    </td>
+                    <td>
+                        MARK3<br>
+                        <input class="inputCell" id="mark3">
+                    </td>
+                    <td>
+                        <input type="button" value="ADD" id="addButton">
+                        <input type="button" value="UPDATE" id="updateButton">
+                    </td>
+                </tr>
+            </form>
+        </table>
+
+        <table id="studentDataTable">
+
+        </table>
+        <br>
+        <table id="studDataTable">
+            <tr>
+                <td>ID</td>
+                <td id="id" class="studDataCell"></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td id="name" class="studDataCell"></td>
+            </tr>
+            <tr>
+                <td>Mark1</td>
+                <td id="mark1" class="studDataCell"></td>
+            </tr>
+            <tr>
+                <td>Mark2</td>
+                <td id="mark2" class="studDataCell"></td>
+            </tr>
+            <tr>
+                <td>Mark3</td>
+                <td id="mark3" class="studDataCell"></td>
+            </tr>
+        </table>
+    </body>
+</html>
